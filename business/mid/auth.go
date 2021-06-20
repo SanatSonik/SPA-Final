@@ -1,10 +1,10 @@
 package mid
 
 import (
-	"EfN20/goFirst/business/auth"
-	"EfN20/goFirst/foundation/web"
 	"context"
 	"errors"
+	"github.com/SanatSonik/SPA-Final/business/auth"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
 	"net/http"
 	"strings"
 )

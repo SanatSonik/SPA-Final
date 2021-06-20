@@ -1,8 +1,8 @@
 package mid
 
 import (
-	"EfN20/goFirst/foundation/web"
 	"context"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
 	"log"
 	"net/http"
 	"time"
@@ -39,7 +39,7 @@ func Logger(log *log.Logger) web.Middleware {
 			)
 			return err
 		}
-	
+
 		return h
 	}
 	return m

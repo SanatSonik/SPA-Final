@@ -1,8 +1,8 @@
 package mid
 
 import (
-	"EfN20/goFirst/foundation/web"
 	"context"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
 	"log"
 	"net/http"
 )
@@ -17,7 +17,7 @@ func Errors(log *log.Logger) web.Middleware {
 
 		// Create the handler that will be attached in the middleware chain.
 		h := func(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
-			
+
 			// If the context is missing this value, request the service
 			// to be shutdown gracefully.
 			v, ok := ctx.Value(web.KeyValues).(*web.Values)

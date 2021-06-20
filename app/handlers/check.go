@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"EfN20/goFirst/foundation/web"
 	"context"
 	"errors"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
 	"log"
 	"math/rand"
 	"net/http"

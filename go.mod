@@ -1,4 +1,4 @@
-module EfN20/goFirst
+module github.com/SanatSonik/SPA-Final
 
 go 1.16
 

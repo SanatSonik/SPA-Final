@@ -1,10 +1,10 @@
 package auth_test
 
 import (
-	"EfN20/goFirst/business/auth"
 	"crypto/rand"
 	"crypto/rsa"
 	"fmt"
+	"github.com/SanatSonik/SPA-Final/business/auth"
 	"testing"
 	"time"
 

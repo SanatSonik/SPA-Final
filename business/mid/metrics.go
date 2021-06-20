@@ -1,9 +1,9 @@
 package mid
 
 import (
-	"EfN20/goFirst/foundation/web"
 	"context"
 	"expvar"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
 	"net/http"
 	"runtime"
 )

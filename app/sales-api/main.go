@@ -1,12 +1,12 @@
 package main
 
 import (
-	"EfN20/goFirst/app/handlers"
-	"EfN20/goFirst/business/auth"
 	"context"
 	"crypto/rsa"
 	"expvar"
 	"fmt"
+	"github.com/SanatSonik/SPA-Final/app/handlers"
+	"github.com/SanatSonik/SPA-Final/business/auth"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -35,7 +35,7 @@ func main() {
 func run(log *log.Logger) error {
 	// =========================================================================
 	// Configuration
-	
+
 	var cfg struct {
 		conf.Version
 		Web struct {
@@ -47,34 +47,34 @@ func run(log *log.Logger) error {
 		}
 
 		Auth struct {
-			KeyID string `conf:"default:54bb2165-71e1-41a6-af3e-7da4a0e1e2c1"`
+			KeyID          string `conf:"default:54bb2165-71e1-41a6-af3e-7da4a0e1e2c1"`
 			PrivateKeyFile string `conf:"default:./private.pem"`
-			Algorithm string `conf:"default:RS256"`
+			Algorithm      string `conf:"default:RS256"`
 		}
 	}
-		cfg.Version.SVN = build
-		cfg.Version.Desc = "copyright information here"
-	
-		if err := conf.Parse(os.Args[1:], "SALES", &cfg); err != nil {
-			switch err {
-			case conf.ErrHelpWanted:
-				usage, err := conf.Usage("SALES", &cfg)
-				if err != nil {
-					return errors.Wrap(err, "generating config usage")
-				}
-				fmt.Println(usage)
-				return nil
-			case conf.ErrVersionWanted:
-				version, err := conf.VersionString("SALES", &cfg)
-				if err != nil {
-					return errors.Wrap(err, "generating config version")
-				}
-				fmt.Println(version)
-				return nil
+	cfg.Version.SVN = build
+	cfg.Version.Desc = "copyright information here"
+
+	if err := conf.Parse(os.Args[1:], "SALES", &cfg); err != nil {
+		switch err {
+		case conf.ErrHelpWanted:
+			usage, err := conf.Usage("SALES", &cfg)
+			if err != nil {
+				return errors.Wrap(err, "generating config usage")
 			}
-			return errors.Wrap(err, "parsing config")
+			fmt.Println(usage)
+			return nil
+		case conf.ErrVersionWanted:
+			version, err := conf.VersionString("SALES", &cfg)
+			if err != nil {
+				return errors.Wrap(err, "generating config version")
+			}
+			fmt.Println(version)
+			return nil
 		}
-	
+		return errors.Wrap(err, "parsing config")
+	}
+
 	// =========================================================================
 	// App Starting
 
@@ -87,7 +87,6 @@ func run(log *log.Logger) error {
 		return errors.Wrap(err, "generating config for output")
 	}
 	log.Printf("main: Config:\n%v\n", out)
-
 
 	// =========================================================================
 	// Initialize authentication support
@@ -104,7 +103,7 @@ func run(log *log.Logger) error {
 	}
 
 	lookup := func(kid string) (*rsa.PublicKey, error) {
-		switch kid{
+		switch kid {
 		case cfg.Auth.KeyID:
 			return &privateKey.PublicKey, nil
 		}
@@ -115,7 +114,6 @@ func run(log *log.Logger) error {
 	if err != nil {
 		return errors.Wrap(err, "constructing auth")
 	}
-
 
 	// =========================================================================
 	// Start Debug Service
@@ -134,7 +132,7 @@ func run(log *log.Logger) error {
 		}
 	}()
 
-    // =========================================================================
+	// =========================================================================
 	// Start API Service
 
 	log.Println("main: Initializing API support")
@@ -184,7 +182,6 @@ func run(log *log.Logger) error {
 
 		log.Printf("main: %v: Completed shutdown", sig)
 	}
-
 
 	return nil
 }

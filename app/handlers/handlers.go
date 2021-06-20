@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"EfN20/goFirst/business/auth"
-	"EfN20/goFirst/business/mid"
-	"EfN20/goFirst/foundation/web"
+	"github.com/SanatSonik/SPA-Final/business/auth"
+	"github.com/SanatSonik/SPA-Final/business/mid"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
 	"log"
 	"net/http"
 	"os"

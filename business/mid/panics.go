@@ -1,9 +1,9 @@
 package mid
 
 import (
-	"EfN20/goFirst/foundation/web"
-	"github.com/pkg/errors"
 	"context"
+	"github.com/SanatSonik/SPA-Final/foundation/web"
+	"github.com/pkg/errors"
 	"log"
 	"net/http"
 	"runtime/debug"
@@ -39,11 +39,11 @@ func Panics(log *log.Logger) web.Middleware {
 
 			// Call the next handler and set its return value in the err variable.
 			return handler(ctx, w, r)
-			
+
 		}
 
 		return h
 	}
-	
+
 	return m
 }
